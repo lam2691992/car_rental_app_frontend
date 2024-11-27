@@ -1,0 +1,62 @@
+<div class="bg" style="background-color: white">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="img-div">
+          <div nz-col-nzSpan="24">
+            <h1 style="margin-left: 100px">Login</h1>
+          </div>
+        </div>
+        <form nz-form [formGroup]="loginForm">
+          
+          <!-- Email -->
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group nzPrefixIcon="user">
+                <input 
+                  type="text" 
+                  nz-input 
+                  placeholder="E-mail" 
+                  formControlName="email" 
+                  [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+                />
+              </nz-input-group>
+              <!-- Kiểm tra lỗi cho email -->
+              <div *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched" class="error-message">
+                Please input your email
+              </div>
+              <div *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="error-message">
+                Invalid email format
+              </div>
+              
+            </nz-form-control>
+          </nz-form-item>
+          
+
+          <!-- Password -->
+          <nz-form-item>
+            <nz-form-control 
+              [nzErrorTip]="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched ? 'Please input your password' : ''"
+              [nzHasFeedback]="loginForm.get('password')?.touched">
+              <nz-input-group nzPrefixIcon="lock">
+                <input type="password" nz-input placeholder="Password" formControlName="password" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+
+          <!-- Login Button -->
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+            (click)="login()"
+            [disabled]="loginForm.invalid"
+          >
+            Log in
+          </button>
+          Or <a routerLink="/register">Register now!</a>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

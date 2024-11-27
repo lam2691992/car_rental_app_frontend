@@ -1,0 +1,48 @@
+<div style="background-color: white; min-height: 91vh">
+  <div style="padding-top: 10px"></div>
+  <div style="margin-top: 10px" class="child" *ngFor="let car of cars">
+    <div class="product-card">
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="24" [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+          <img
+            class="profile"
+            [src]="car.processedImg"
+            alt="profile"
+          />
+        </div>
+        <div nz-col [nzSpan]="24" [nzXs]="24" [nzSm]="12" [nzMd]="16" [nzLg]="16">
+          <h2 class="product-title">{{ car.brand }} - {{ car.name }}</h2>
+          <p>{{ car.description }}</p>
+          <!-- Hiển thị nếu có nhiều ghi chú trong car.notes -->
+<div *ngIf="car.notes?.length > 0">
+  <b>Notes:</b>
+  <ul>
+    <li *ngFor="let note of car.notes">{{ note }}</li>
+  </ul>
+</div>
+
+<!-- Hiển thị nếu không có ghi chú trong car.notes -->
+<div *ngIf="car.notes?.length === 0">
+  <b>Note:</b> No additional notes
+</div>
+
+
+          <hr>
+          <h5>
+            Price/day: <b>${{ car.price }}</b> - Color: <b>{{ car.color }}</b> - Transmission: <b>{{ car.transmission }}</b> - Type: <b>{{ car.type }}</b> - Year:
+            <b>{{ car.year | date: 'yyyy' }}</b>
+          </h5>
+          <hr/>
+          <div class="actions">
+            <button nz-button nzType="primary" routerLink="/admin/car/{{car.id}}">
+              Update
+            </button>
+            <button nz-button nzType="primary" nzDanger (click)="deleteCar(car.id)" class="delete-button">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

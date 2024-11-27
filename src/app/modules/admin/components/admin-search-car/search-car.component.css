@@ -1,0 +1,89 @@
+.inner-content {
+  padding: 32px;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: white;
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.filter-fields-width {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.filter-select-dropdown {
+  display: flex;
+  flex: 1 0 calc(50% - 10px);
+  box-sizing: border-box;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nz-form-item {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.nz-form-item:last-child {
+  margin-right: 0;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 207px;
+  background-color: #003380;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.filter-btn:hover {
+  background-color: #1165e3;
+}
+.car-list {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.child {
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.profile {
+  height: 130px;
+  width: 220px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.profile:hover {
+  transform: scale(1.05); /* Phóng to ảnh khi hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng khi hover */
+}

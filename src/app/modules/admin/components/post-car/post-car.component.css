@@ -1,0 +1,93 @@
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.child {
+  padding: 50px;
+  width: 100%;
+  max-width: 680px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.img-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+h2 {
+  font-weight: 700;
+  color: #003380;
+}
+
+.profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-top: -5px; 
+   border: 3px solid #ddd; 
+   transform: translateX(80px);
+}
+
+
+.upload-label {
+  width: 70px;
+  height: 35px;
+  margin-top: 10px;
+}
+
+
+input[nz-input],
+nz-select,
+nz-year-picker,
+textarea {
+  width: 100%;
+  border: 1px solid #d9d9d9; 
+  outline: none; 
+  box-shadow: none;
+}
+
+.price {
+  margin-top: 20px;
+}
+.description {
+  width: 100%;
+}
+
+.description nz-form-control textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.note-label{
+  font-weight: 600;
+}
+
+.note-input{
+  margin-bottom: 10px;
+}
+
+.delete-note-button{
+  margin-bottom: 10px;
+}
+.post-car-button {
+  margin-top: 10px;
+  width: 100%;
+}
+.error-message{
+  color: red;
+}

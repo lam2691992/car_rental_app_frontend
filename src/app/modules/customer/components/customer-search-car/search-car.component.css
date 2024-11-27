@@ -1,0 +1,68 @@
+.inner-content {
+  padding: 32px;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-grid {
+  background: #fcfcfc;
+  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.filter-fields-width {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.filter-select-dropdown {
+  display: flex; /* Sử dụng flexbox */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  margin-top: 20px; /* Khoảng cách phía trên (tuỳ chọn) */
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 207px;
+  background-color: #003380;
+  color: #fff;
+  border: none;
+  padding: 10px 0; /* Padding trên và dưới */
+  border-radius: 5px;
+  height: 40px; /* Chiều cao của nút */
+  line-height: 40px; /* Đặt line-height bằng với chiều cao để căn giữa chữ */
+}
+.filter-btn:hover{
+  background-color: #1165e3;
+}
+.car-list {
+  background-color: #fff;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.child {
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.profile {
+  height: 130px;
+  width: 220px;
+  border-radius: 10px;
+}

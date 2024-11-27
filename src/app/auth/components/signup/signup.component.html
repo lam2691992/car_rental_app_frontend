@@ -1,0 +1,77 @@
+<div class="bg" style="background-color: white">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="img-div">
+          <div nz-col nzSpan="24">
+            <h1 style="margin-left: 80px">Sign Up</h1>
+          </div>
+        </div>
+        <form nz-form [formGroup]="signupForm" (ngSubmit)="register()">
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="Invalid email">
+              <input
+                nz-input
+                placeholder="E-mail"
+                id="email"
+                formControlName="email"
+              />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-control nzHasFeedback nzErrorTip="Error Password">
+              <input
+                type="password"
+                nz-input
+                placeholder="Password"
+                id="password"
+                formControlName="password"
+              />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="Please confirm your password!"
+            >
+              <input
+                nz-input
+                type="password"
+                placeholder="Confirm password"
+                id="check-password"
+                formControlName="confirmPassword"
+              />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-control
+              nzHasFeedback
+              nzErrorTip="Please input your username!"
+            >
+              <input
+                nz-input
+                placeholder="Username"
+                id="name"
+                formControlName="name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+            type="submit"
+            [disabled]="signupForm.invalid"
+          >
+            Register
+          </button>
+          Or <a routerLink="/login">Login now!</a>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

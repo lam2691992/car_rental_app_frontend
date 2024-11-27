@@ -1,0 +1,228 @@
+<div style="margin-top: 50px">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="'Working'">
+    <div class="parent">
+      <div class="child">
+        <div nz-row class="img-div">
+          <h2>Upload Car</h2>
+        </div>
+
+        <form nz-form [formGroup]="postCarForm">
+          <div nz-row>
+            <div nz-col [nzMd]="24">
+              <div class="profile-badge">
+                <label
+                  for="upload_profile_image"
+                  class="upload-label"
+                  *ngIf="selectedFile"
+                >
+                  <img class="profile" [src]="imgPreview" alt="profile" />
+                </label>
+                <input
+                  type="file"
+                  nz-button
+                  nzType="primary"
+                  id="upload_profile_image"
+                  accept="image/x-png,image/gif,image/jpeg"
+                  (change)="onFileSelected($event)"
+                />
+                <button nz-button nzShape="circle"></button>
+              </div>
+            </div>
+            <div nz-col nzSpan="24" class="brand">
+              <nz-form-item>
+                <nz-form-control
+                  nzHasFeedback
+                  [nzXs]="24"
+                  nzErrorTip="This input is required!"
+                >
+                <div *ngIf="postCarForm.get('brand')?.invalid && postCarForm.get('brand')?.touched" class="error-message">
+                  Brand is required.
+                </div>
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Brand name"
+                    formControlName="brand"
+                  >
+                    <nz-option
+                      *ngFor="let brand of listOfBrands"
+                      nzLabel="{{ brand }}"
+                      nzValue="{{ brand }}"
+                    >
+                    </nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control
+                  nzHasFeedback
+                  [nzXs]="24"
+                  nzErrorTip="This input is required"
+                >
+                <div *ngIf="postCarForm.get('name')?.invalid && postCarForm.get('name')?.touched" class="error-message">
+                  Name is required.
+                </div>
+                  <input nz-input placeholder="Name" formControlName="name" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="This input is Required">
+                  <div *ngIf="postCarForm.get('type')?.invalid && postCarForm.get('type')?.touched" class="error-message">
+                    Type is required.
+                  </div>
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Type"
+                    formControlName="type"
+                  >
+                    <nz-option
+                      *ngFor="let type of listOfType"
+                      nzLabel="{{ type }}"
+                      nzValue="{{ type }}"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="This input is required">
+                  <div *ngIf="postCarForm.get('transmission')?.invalid && postCarForm.get('transmission')?.touched" class="error-message">
+                    Transmission is required.
+                  </div>
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Transmission"
+                    formControlName="transmission"
+                  >
+                    <nz-option
+                      *ngFor="let transmission of listOfTransmission"
+                      nzLabel="{{ transmission }}"
+                      nzValue="{{ transmission }}"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="This input is required">
+                  <div *ngIf="postCarForm.get('color')?.invalid && postCarForm.get('color')?.touched" class="error-message">
+                    Color is required.
+                  </div>
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Color"
+                    formControlName="color"
+                  >
+                    <nz-option
+                      *ngFor="let color of listOfColor"
+                      nzLabel="{{ color }}"
+                      nzValue="{{ color }}"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-control
+                nzHasFeedback
+                [nzXs]="24"
+                nzErrorTip="This input is required"
+              >
+              <div *ngIf="postCarForm.get('year')?.invalid && postCarForm.get('year')?.touched" class="error-message">
+                Model year is required.
+              </div>
+                <nz-year-picker
+                  style="width: 100%"
+                  nzPlaceHolder="Model year"
+                  formControlName="year"
+                ></nz-year-picker>
+              </nz-form-control>
+            </div>
+
+            <div nz-col nzSpan="24" class="price">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="This input is required">
+                  <div *ngIf="postCarForm.get('price')?.invalid && postCarForm.get('price')?.touched" class="error-message">
+                    Price is required.
+                  </div>
+                  <input
+                    nz-input
+                    placeholder="$Price/hr"
+                    formControlName="price"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24" class="description">
+              <nz-form-item>
+                <nz-form-control nzErrorTip="This input is required">
+                  <div *ngIf="postCarForm.get('description')?.invalid && postCarForm.get('description')?.touched" class="error-message">
+                    Description is required.
+                  </div>
+                  <textarea
+                    rows="1"
+                    nz-input
+                    formControlName="description"
+                    placeholder="Description"
+                  ></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div  formArrayName="noted">
+            <div *ngFor="let notedControl of noted.controls; let i = index" [formGroupName]="i">
+              <label class="note-label" for="noted-{{ i }}">NOTE {{ i + 1 }}:</label>
+              <input
+                nz-input
+                class="note-input"
+                id="noted-{{ i }}"
+                formControlName="noted"
+                placeholder="Note"
+              />
+              <div *ngIf="notedControl.get('noted')?.errors?.['invalidLength']" class="error-message">
+                Note must be between
+                {{ notedControl.get('noted')?.errors?.['invalidLength']?.requiredMin }} and
+                {{ notedControl.get('noted')?.errors?.['invalidLength']?.requiredMax }} characters.
+              </div>
+              <button
+                nz-button
+                class="delete-note-button"
+                [nzType]="'primary'"
+                nzDanger=""
+                (click)="removeNoted(i)"
+              >
+                Remove
+              </button>
+            </div>
+            
+          </div>
+
+          <button nz-button class="add-note-button" [nzType]="'primary'" (click)="addNoted()">
+            Add New Note
+          </button>
+          <button
+            nz-button
+            class="post-car-button"
+            [nzType]="'primary'"
+            (click)="postCar()"
+          >
+            Upload Car
+          </button>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>

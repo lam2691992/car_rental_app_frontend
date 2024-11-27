@@ -1,0 +1,72 @@
+<nz-spin
+  [nzSpinning]="isSpinning"
+  [nzSize]="'large'"
+  nzTip="Loading bookings..."
+>
+  <nz-table [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Total Days</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.username }}</td>
+        <td>{{ booking.email }}</td>
+        <td>{{ booking.fromDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ booking.toDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ booking.days }}</td>
+        <td>{{ booking.price | currency }}</td>
+        <td>
+          <strong
+            [ngStyle]="{
+              color:
+                booking.bookCarStatus === 1
+                  ? '#003380'
+                  : booking.bookCarStatus === 2
+                  ? 'red'
+                  : 'black'
+            }"
+          >
+            {{ getStatusString(booking.bookCarStatus) }}
+          </strong>
+        </td>
+        <td>
+          <span *ngIf="booking.bookCarStatus === 0">
+            <div class="button-container">
+              <button
+                nz-button
+                nzSize="small"
+                nzType="primary"
+                [disabled]="isChangingStatus[booking.id]"
+                (click)="changeBookingStatus(booking.id, 1)"
+              >
+                <nz-spin *ngIf="isChangingStatus[booking.id]" nzSimple></nz-spin>
+                Approve
+              </button>
+              <button
+                nz-button
+                nzSize="small"
+                nzType="primary"
+                nzDanger
+                [disabled]="isChangingStatus[booking.id]"
+                (click)="changeBookingStatus(booking.id, 2)"
+                style="margin-left: 8px"
+              >
+                <nz-spin *ngIf="isChangingStatus[booking.id]" nzSimple></nz-spin>
+                Reject
+              </button>
+            </div>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-spin>

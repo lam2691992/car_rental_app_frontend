@@ -1,0 +1,86 @@
+<div style="background-color: white; min-height: 91vh" *ngIf="car">
+  <div style="padding-top: 10px"></div>
+  <div style="margin-top: 10px" class="child">
+    <div class="product-card">
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="24" [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+          <img class="profile" [src]="processedImage" alt="profile" />
+        </div>
+        <div
+          nz-col
+          [nzSpan]="24"
+          [nzXs]="24"
+          [nzSm]="12"
+          [nzMd]="16"
+          [nzLg]="16"
+        >
+          <h2 class="product-title">{{ car.brand }} - {{ car.name }}</h2>
+          <p>{{ car.description }}</p>
+          <hr />
+          <h5>
+            Price/day: <b>${{ car.price }}</b> - Color:
+            <b>{{ car.color }}</b> - Transmission:
+            <b>{{ car.transmission }}</b> - Type: <b>{{ car.type }}</b> - Year:
+            <b>{{ car.year | date : "yyyy" }}</b>
+          </h5>
+          <hr />
+        </div>
+      </div>
+    </div>
+    
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." style="mask-type: 50px;">
+      <div class="dashboard-filter">
+        <form [formGroup]="validateForm">
+          <div class="filter-grid">
+            <div class="filter-select-dropdown">
+              <nz-form-item class="date-picker-row">
+                <!-- From Date -->
+                <nz-form-label nzFor="fromDate">From Date</nz-form-label>
+                <nz-form-control>
+                  <nz-date-picker
+                    formControlName="fromDate"
+                    nzPlaceHolder="From Date"
+                    [nzFormat]="dateFormat"
+                    id="fromDate"
+                  ></nz-date-picker>
+                  <!-- Hiển thị lỗi -->
+                  <div *ngIf="getFormControl('fromDate').invalid && getFormControl('fromDate').touched" class="error-message">
+                    {{ getErrorMessage('fromDate') }}
+                  </div>
+                </nz-form-control>
+      
+                <!-- To Date -->
+                <nz-form-label nzFor="toDate">To Date</nz-form-label>
+                <nz-form-control>
+                  <nz-date-picker
+                    formControlName="toDate"
+                    nzPlaceHolder="To Date"
+                    [nzFormat]="dateFormat"
+                    id="toDate"
+                  ></nz-date-picker>
+                  <!-- Hiển thị lỗi -->
+                  <div *ngIf="getFormControl('toDate').invalid && getFormControl('toDate').touched" class="error-message">
+                    {{ getErrorMessage('toDate') }}
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+      
+            <div class="filter-select-dropdown filter-fields-width">
+              <button
+                class="filter-btn"
+                style="margin-left: 45px;"
+                nz-button
+                nzType="primary"
+                (click)="bookACar(validateForm.value)"
+              >
+                Book This Car
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+    </nz-spin>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+
+.product-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .profile {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile:hover {
+    transform: scale(1.05); /* Phóng to ảnh khi hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng khi hover */
+  }
+  
+  .product-title {
+    cursor: pointer;
+    color: #003380;
+    margin-top: 10px;
+  }
+  
+  h5 {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  b{
+    color: #003380;
+}
+p{
+    font-size: 16px;
+    font-weight: 700;
+  
+}
+  
+  .actions {
+    text-align: right;
+  }
+  
+  button[nz-button] {
+    margin-top: 10px;
+  }
+  .delete-button {
+    margin-left: 10px;
+  }
+  

@@ -1,0 +1,155 @@
+<div class="inner-content">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <div class="dashboard-filter">
+      <div class="gilter-grid" [formGroup]="searchCarForm">
+        <!-- Brand -->
+        <nz-form-item>
+          <nz-form-label nzFor="brand">Brand</nz-form-label>
+          <nz-form-control
+            [nzErrorTip]="
+              searchCarForm.get('brand')?.hasError('required')
+                ? 'Car brand is required'
+                : ''
+            "
+          >
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a brand"
+              formControlName="brand"
+            >
+              <nz-option
+                *ngFor="let brand of listOfBrands"
+                [nzLabel]="brand"
+                [nzValue]="brand"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Type -->
+        <nz-form-item>
+          <nz-form-label nzFor="type">Type</nz-form-label>
+          <nz-form-control
+            [nzErrorTip]="
+              searchCarForm.get('type')?.hasError('required')
+                ? 'Car Type is required'
+                : ''
+            "
+          >
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a type"
+              formControlName="type"
+            >
+              <nz-option
+                *ngFor="let type of listOfType"
+                [nzLabel]="type"
+                [nzValue]="type"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Color -->
+        <nz-form-item>
+          <nz-form-label nzFor="color">Color</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a color"
+              formControlName="color"
+            >
+              <nz-option
+                *ngFor="let color of listOfColor"
+                [nzLabel]="color"
+                [nzValue]="color"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Transmission -->
+        <nz-form-item>
+          <nz-form-label nzFor="transmission">Transmission</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select transmission"
+              formControlName="transmission"
+            >
+              <nz-option
+                *ngFor="let transmission of listOfTransmission"
+                [nzLabel]="transmission"
+                [nzValue]="transmission"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Min Price -->
+        <nz-form-item>
+          <nz-form-label nzFor="minPrice">Min Price</nz-form-label>
+          <nz-form-control>
+            <nz-input-number
+              formControlName="minPrice"
+              [nzMin]="0"
+              [nzStep]="50"
+              nzPlaceHolder="Min Price"
+            ></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Max Price -->
+        <nz-form-item>
+          <nz-form-label nzFor="maxPrice">Max Price</nz-form-label>
+          <nz-form-control>
+            <nz-input-number
+              formControlName="maxPrice"
+              [nzMin]="0"
+              [nzStep]="50"
+              nzPlaceHolder="Max Price"
+            ></nz-input-number>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!-- Search Button -->
+        <div class="filter-select-dropdown">
+          <button
+            class="filter-btn"
+            nz-button
+            nzType="primary"
+            (click)="searchCar()"
+          >
+            Search Car
+          </button>
+        </div>
+      </div>
+    </div>
+  </nz-spin>
+</div>
+
+<div class="car-list" style="background-color: #fff">
+  <div class="child" *ngFor="let car of cars">
+    <div nz-row>
+      <div nz-col nzSpan="8">
+        <img class="profile" [src]="car.processedImg" alt="profile" />
+      </div>
+      <div nz-col nzSpan="16">
+        <h2 style="cursor: pointer; color: #003380">
+          {{ car.brand }} - {{ car.name }}
+        </h2>
+        <p class="description">{{ car.description }}</p>
+        <hr />
+        <h5>
+          Price: <b>${{ car.price }}</b> - Color: <b>{{ car.color }}</b> -
+          Transmission: <b>{{ car.transmission }}</b> - Type:
+          <b>{{ car.type }}</b> - Year: <b>{{ car.year | date : "yyyy" }}</b>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
